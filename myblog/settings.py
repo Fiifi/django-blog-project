@@ -1,7 +1,8 @@
 # Django settings for myblog project.
+
 import dj_database_url
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -9,10 +10,10 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
-
 DATABASES = {
-	     'default' : dj_database_url(default="sqlite:/blog_dev.db")
+'default' : dj_database_url.config(default="sqlite:/blog_dev.db")
 }
+
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -112,11 +113,11 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog'
+    'blog',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
-    'django.contrib.admindocs',
+    #'django.contrib.admindocs',
     
 )
 
