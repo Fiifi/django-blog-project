@@ -18,7 +18,25 @@ class Comment(models.Model):
       post=models.ForeignKey(Post)
       def __unicode__(self):
           return self.author
+      
+      
+class PostAdmin(admin.ModelAdmin):
+      list_display=('title','date_created','date_updated')
+      search_fields=('title','body')
+      list_filter=('date_created','title')
+      	
 
-admin.site.register(Post)
-admin.site.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+      list_display=('post','author','body','date_created','date_updated')
+      list_filter=('date_created','author')
+      def body_first_60(self):
+	 return self.body[:60]       
 
+class CommentInline(admin.TabularInline):
+      model=Comment
+
+
+admin.site.register(Post,PostAdmin)
+admin.site.register(Comment,CommentAdmin)
+#admin.site.register(PostAdmin)
+#admin.site.register(CommentAdmin)
