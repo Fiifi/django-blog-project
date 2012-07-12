@@ -14,23 +14,22 @@ def post_list(request):
     print type(post_list)
     print post_list
     item=[]
-    for item in post_list:
-        items.append(item.title)
+    for post in post_list:
+        item.append(post.title)
 
     
-    return HttpResponse(items)
+    return HttpResponse(item)
 
 def post_detail(request, id, showComments=False):
     post=Post.objects.get(pk=id)
-    if (showComents):
+    if (showComments):
         out='<h1>'+post.title+'</h1>'+'<br>'+post.body
     else:
         out=post.title+'<br>'
     return HttpResponse(out)
     
 def post_search(request, term):
-    search = Post.objects.filter
-    comment_title_contains='<br>'+post.term
+    search = Post.objects.filter(comment_title_contains='<br>'+term)
     return HttpResponse()
 
 def home(request):
