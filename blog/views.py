@@ -28,8 +28,8 @@ def post_detail(request, id, showComments=False):
         out=post.title+'<br>'
     return HttpResponse(out)
     
-def post_search(request, term):
-    search = Post.objects.filter(comment_title_contains='<br>'+term)
+def post_search(request, term):             
+    search = Post.objects.filter(title__contains='<br>'+term)
     return HttpResponse()
 
 def home(request):
