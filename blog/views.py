@@ -29,8 +29,12 @@ def post_detail(request, id, showComments=False):
     return HttpResponse(out)
     
 def post_search(request, term):             
-    search = Post.objects.filter(title__contains='<br>'+term)
-    return HttpResponse()
+    search = Post.objects.filter(title__contains=term )
+    out =""
+    for i in search:
+    	out +='<h1>'+i.title
+    
+    return HttpResponse(out)
 
 def home(request):
     print 'it works'
